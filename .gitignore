@@ -1,3 +1,50 @@
-/.idea
-/.ipynb_checkpoints
-/.venv
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Wirtualne środowisko
+venv/
+.env/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logi i pliki tymczasowe
+*.log
+*.tmp
+
+# Jupyter Notebook Checkpoints (jeśli używasz notebooków)
+.ipynb_checkpoints/
+
+# Pliki konfiguracyjne IDE/Edytorów (jeśli używasz)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pliki testowe i raporty
+.coverage
+*.pytest_cache/
+htmlcov/
+
+# Pliki binarne
+*.so
+*.dll
+*.dylib
+*.o
+*.a
+
+# Kompresje i archiwa
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Specyficzne dla projektu
+requirements.txt.lock
