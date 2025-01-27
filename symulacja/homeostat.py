@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class Homeostat:
     def __init__(self, name="Homeostat", alpha_homeostat=0.05, equilibrium_wr=0.5, decision_threshold_vd=0.6):
         self.name = name

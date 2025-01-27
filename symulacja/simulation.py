@@ -326,7 +326,7 @@ def main():
 
         # --- URUCHAMIANIE ANALIZA.PY ---
         print("Running analiza.py...")
-        subprocess.run(['python', 'analiza.py'])  # Uruchomienie analizy w osobnym procesie
+        subprocess.run(['python', 'symulacja/analiza.py'])  # Uruchomienie analizy w osobnym procesie
         print("Analiza completed.")
         # --- KONIEC URUCHAMIANIA ANALIZA.PY ---
 

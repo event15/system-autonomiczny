@@ -398,7 +398,7 @@ def run_analyses(df, scenario_name="scenario", do_advanced=False):
                                            window_size=50, step=10, interval=300)
         # Możesz zapisać anim:
         plt.show()
-        anim.save(f"{scenario_name}_heatmap.gif", writer="pillow")
+        anim.save(f"analiza/media/{scenario_name}_heatmap.gif", writer="pillow")
         print("Animacja stworzona (zwrócony obiekt FuncAnimation)")
 
     print(f"\n=== Zakończono analizy dla {scenario_name} ===")
