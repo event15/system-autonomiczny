@@ -1,4 +1,6 @@
 import numpy as np
+
+
 class Efektor:
     def __init__(self, nazwa="Efektor", Vd=0.6, opoznienie_reakcji_tau=2.5, czas_trwania_reakcji_tau_r=5.0, P_max=1.0):
         self.nazwa = nazwa

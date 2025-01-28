@@ -17,7 +17,7 @@ class Korelator:
         self.wspolczynnik_vp_k = wspolczynnik_vp_k
         self.wspolczynnik_vp_delta_g = wspolczynnik_vp_delta_g
         self.poprzednia_przewodnosc_g = przewodnosc_poczatkowa_g0
-        self.kg_graniczne = 0.0 # Dodano atrybut dla granicznej mocy korelacyjnej
+        self.kg_graniczne = 0.0
 
     def oblicz_potencjal_korelacyjny(self, potencjal_rejestracyjny_vr_suma, potencjal_refleksyjny_vh):
         self.potencjal_korelacyjny_vk = potencjal_rejestracyjny_vr_suma + potencjal_refleksyjny_vh
@@ -32,14 +32,14 @@ class Korelator:
         return self.potencjal_estymacyjny_ve
 
     def aktualizuj_przewodnosc_rejestracja(self, wartosc_bodzca, dt):
-        self.kg_graniczne = self.oblicz_kg_graniczne() # Oblicz i zapisz kg_graniczne
+        self.kg_graniczne = self.oblicz_kg_graniczne()
         gg = self.oblicz_gg_graniczne()
         g_docelowe = gg - (gg - self.przewodnosc_poczatkowa_g0) * np.exp(-self.ekstynkcja_rejestracji_r * dt)
         dg = (g_docelowe - self.przewodnosc_g)
         self.przewodnosc_g += dg
 
     def aktualizuj_przewodnosc_derejestracja(self, dt):
-        self.kg_graniczne = self.oblicz_kg_graniczne() # Oblicz i zapisz kg_graniczne
+        self.kg_graniczne = self.oblicz_kg_graniczne()
         gp = self.przewodnosc_g
         g_docelowe = self.przewodnosc_poczatkowa_g0 + (gp - self.przewodnosc_poczatkowa_g0) * np.exp(
             -self.ekstynkcja_derejestracji_d * dt)
@@ -70,7 +70,7 @@ class Korelator:
     def pobierz_potencjal_korelacyjny_vk(self):
         return self.potencjal_korelacyjny_vk
 
-    def pobierz_kg_graniczne(self): # Dodano pobieranie kg_graniczne
+    def pobierz_kg_graniczne(self):
         return self.kg_graniczne
 
     def aktualizuj_homeostat_vp(self, homeostat):
@@ -93,7 +93,7 @@ if __name__ == '__main__':
     wartosci_vh = []
     wartosci_vp = []
     wartosci_delta_g = []
-    wartosci_kg_graniczne = [] # Dodano listę dla kg_graniczne
+    wartosci_kg_graniczne = []
 
     for t in punkty_czasowe:
         wartosc_bodzca = 1.0 if 5 < t < 15 else 0.0
@@ -122,7 +122,7 @@ if __name__ == '__main__':
         wartosci_vh.append(homeostat.pobierz_potencjal_refleksyjny())
         wartosci_vp.append(homeostat.pobierz_potencjal_perturbacyjny())
         wartosci_delta_g.append(delta_g)
-        wartosci_kg_graniczne.append(korelator.pobierz_kg_graniczne()) # Rejestruj kg_graniczne
+        wartosci_kg_graniczne.append(korelator.pobierz_kg_graniczne())
 
     import matplotlib.pyplot as plt
 
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     plt.plot(punkty_czasowe, wartosci_vh, label='Potencjał Refleksyjny Vh(t)')
     plt.plot(punkty_czasowe, wartosci_vp, label='Potencjał Perturbacyjny Vp(t)')
     plt.plot(punkty_czasowe, wartosci_delta_g, label='Zmiana Przewodności |Delta G|(t)')
-    plt.plot(punkty_czasowe, wartosci_kg_graniczne, label='Graniczna Moc Korelacyjna Kg(t)', linestyle='--') # Wykres Kg
+    plt.plot(punkty_czasowe, wartosci_kg_graniczne, label='Graniczna Moc Korelacyjna Kg(t)', linestyle='--')
 
     plt.xlabel("Czas")
     plt.ylabel("Wartość")
