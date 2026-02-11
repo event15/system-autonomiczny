@@ -9,7 +9,7 @@ packaging==24.2
 pandas==2.2.3
 pandas-flavor==0.6.0
 patsy==1.0.1
-pillow==11.1.0
+pillow==12.1.1
 pingouin==0.5.5
 pyparsing==3.2.1
 PyQt5==5.15.11
